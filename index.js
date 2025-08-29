@@ -106,3 +106,11 @@ app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
     console.log('API endpoint available at POST /bfhl');
 });
+
+// Default route for invalid paths
+app.use((req, res) => {
+  res.status(404).json({
+    is_success: false,
+    message: "Invalid route. Please use the '/bfhl' endpoint with a POST request."
+  });
+});
